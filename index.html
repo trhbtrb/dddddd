@@ -4,42 +4,281 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Clone</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="google-logo">
-        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google Logo">
-    </div>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Add favicon -->
+    <link rel="icon" href="https://www.google.com/favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-    <div class="search-bar-container">
-        <form action="https://www.google.com/search" method="GET">
-            <div class="search-bar">
-                <input type="text" name="q" placeholder="Search Google or type a URL">
-            </div>
-            <div class="buttons">
-                <input type="submit" value="Google Search">
-                <input type="button" value="I'm Feeling Lucky" onclick="luckySearch()">
-            </div>
-        </form>
-    </div>
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-    <div class="links">
-        <a href="#">Advertising</a>
-        <a href="#">Business</a>
-        <a href="#">About</a>
-        <a href="#">Privacy</a>
-        <a href="#">Settings</a>
-    </div>
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            padding: 1rem;
+            gap: 1rem;
+            background-color: #fff;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
 
-    <script>
-        function luckySearch() {
-            const query = document.querySelector('.search-bar input').value;
-            if (query) {
-                window.location.href = 'https://www.google.com/search?btnI=I&q=' + encodeURIComponent(query);
-            } else {
-                window.location.href = 'https://www.google.com/doodles';
+        nav a {
+            text-decoration: none;
+            color: #000;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: -100px;
+        }
+
+        .logo {
+            margin-bottom: 2rem;
+        }
+
+        .logo img {
+            width: 272px;
+            height: 92px;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 584px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            padding: 8px 16px;
+            margin: 0 16px;
+            background-color: #fff;
+        }
+
+        .search-box:hover {
+            box-shadow: 0 1px 6px rgba(32,33,36,.28);
+            border-color: rgba(223,225,229,0);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 0 8px;
+        }
+
+        .search-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #9aa0a6;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .buttons button {
+            background-color: #f8f9fa;
+            border: 1px solid #f8f9fa;
+            border-radius: 4px;
+            color: #3c4043;
+            font-size: 14px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        .buttons button:hover {
+            border-color: #dadce0;
+            box-shadow: 0 1px 1px rgba(0,0,0,.1);
+        }
+
+        footer {
+            background-color: #f2f2f2;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-size: 14px;
+            color: #70757a;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: #70757a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Optional: Adjust icon size and color */
+        .footer-links a i {
+            font-size: 16px;
+            color: #70757a;
+        }
+
+        .footer-links a:hover i {
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
             }
         }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">
+            <img src="https://www.google.com/images/branding/product/ico/gmail.ico" alt="Gmail" width="20" height="20">
+            Gmail
+        </a>
+        <a href="#">
+            <img src="https://www.google.com/images/branding/product/ico/search_images2.ico" alt="Images" width="20" height="20">
+            Images
+        </a>
+        <a href="#">
+            <i class="fas fa-th"></i>
+            Apps
+        </a>
+        <a href="#">
+            <img src="https://via.placeholder.com/24" alt="User Avatar" width="24" height="24" style="border-radius:50%;">
+        </a>
+    </nav>
+
+    <main>
+        <div class="logo">
+            <!-- Replace placeholder with actual Google logo -->
+            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google" />
+        </div>
+        <div class="search-container">
+            <form onsubmit="handleSearch(event)">
+                <div class="search-box">
+                    <i class="fas fa-search" style="color: #9aa0a6"></i>
+                    <input type="text" id="searchInput" autocomplete="off" placeholder="Search Google or type a URL" />
+                    <div class="search-icons">
+                        <i class="fas fa-keyboard"></i>
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="submit">Google Search</button>
+                    <button type="button" onclick="feelingLucky()">I'm Feeling Lucky</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">
+                    <i class="fas fa-info-circle"></i>
+                    About
+                </a>
+                <a href="#">
+                    <i class="fas fa-bullhorn"></i>
+                    Advertising
+                </a>
+                <a href="#">
+                    <i class="fas fa-briefcase"></i>
+                    Business
+                </a>
+                <a href="#">
+                    <i class="fas fa-search"></i>
+                    How Search works
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="#">
+                    <i class="fas fa-shield-alt"></i>
+                    Privacy
+                </a>
+                <a href="#">
+                    <i class="fas fa-file-contract"></i>
+                    Terms
+                </a>
+                <a href="#">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function handleSearch(event) {
+            event.preventDefault();
+            const searchTerm = document.getElementById('searchInput').value;
+            if (searchTerm.trim() !== '') {
+                window.location.href = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
+            }
+        }
+
+        function feelingLucky() {
+            const searchTerm = document.getElementById('searchInput').value;
+            window.location.href = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}&btnI`;
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            const searchInput = document.getElementById('searchInput');
+            
+            // Focus search input when / is pressed
+            if (event.key === '/' && document.activeElement !== searchInput) {
+                event.preventDefault();
+                searchInput.focus();
+            }
+
+            // Ctrl/Cmd + K to focus search
+            if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+                event.preventDefault();
+                searchInput.focus();
+            }
+        });
     </script>
 </body>
 </html>
