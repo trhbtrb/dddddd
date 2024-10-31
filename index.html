@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Google Clone</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,16 +12,34 @@
     </div>
 
     <div class="search-bar-container">
-        <form action="">
+        <form action="https://www.google.com/search" method="GET">
             <div class="search-bar">
-                <input type="text" placeholder="Search Google or type a URL">
+                <input type="text" name="q" placeholder="Search Google or type a URL">
             </div>
             <div class="buttons">
                 <input type="submit" value="Google Search">
-                <input type="button" value="I'm Feeling Lucky">
+                <input type="button" value="I'm Feeling Lucky" onclick="luckySearch()">
             </div>
         </form>
     </div>
 
+    <div class="links">
+        <a href="#">Advertising</a>
+        <a href="#">Business</a>
+        <a href="#">About</a>
+        <a href="#">Privacy</a>
+        <a href="#">Settings</a>
+    </div>
+
+    <script>
+        function luckySearch() {
+            const query = document.querySelector('.search-bar input').value;
+            if (query) {
+                window.location.href = 'https://www.google.com/search?btnI=I&q=' + encodeURIComponent(query);
+            } else {
+                window.location.href = 'https://www.google.com/doodles';
+            }
+        }
+    </script>
 </body>
 </html>
